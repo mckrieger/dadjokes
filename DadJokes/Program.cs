@@ -1,9 +1,15 @@
 using DadJokes.Services;
+using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Http Client
-builder.Services.AddHttpClient();
+builder.Services.AddHttpClient("ICanHazDadJoke", httpClient =>
+{
+    httpClient.DefaultRequestHeaders.Add(HeaderNames.UserAgent, "DadJokes Project (https://github.com/mckrieger/dadjokes)");
+    httpClient.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
+    httpClient.BaseAddress = new Uri("https://icanhazdadjoke.com/");
+});
 builder.Services.AddScoped<IJokeService, JokeService>();
 // Add services to the container.
 builder.Services.AddControllers();

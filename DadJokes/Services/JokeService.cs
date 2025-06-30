@@ -11,7 +11,6 @@ public interface IJokeService
 public class JokeService : IJokeService
 {
     private readonly IHttpClientFactory _factory;
-    private readonly static string _userAgent = "DadJokes Project (https://github.com/mckrieger/dadjokes)";
     public JokeService(
         IHttpClientFactory factory
     )
@@ -21,11 +20,7 @@ public class JokeService : IJokeService
 
     public async Task<JokeModel?> GetRandomAsync()
     {
-        using var client = _factory.CreateClient();
-
-        client.DefaultRequestHeaders.Add("User-Agent", _userAgent);
-        client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.BaseAddress = new Uri("https://icanhazdadjoke.com/");
+        var client = _factory.CreateClient("ICanHazDadJoke");
 
         JokeModel? response = await client.GetFromJsonAsync<JokeModel>("");
         return response;
