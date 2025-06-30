@@ -80,11 +80,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mkrieger/Coding/Degreed/DadJokes/DadJokes.csproj",
+      "projectUniqueName": "/Users/mkrieger/Coding/DadJokesASP/DadJokes/DadJokes.csproj",
       "projectName": "DadJokes",
-      "projectPath": "/Users/mkrieger/Coding/Degreed/DadJokes/DadJokes.csproj",
+      "projectPath": "/Users/mkrieger/Coding/DadJokesASP/DadJokes/DadJokes.csproj",
       "packagesPath": "/Users/mkrieger/.nuget/packages/",
-      "outputPath": "/Users/mkrieger/Coding/Degreed/DadJokes/obj/",
+      "outputPath": "/Users/mkrieger/Coding/DadJokesASP/DadJokes/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mkrieger/.nuget/NuGet/NuGet.Config"

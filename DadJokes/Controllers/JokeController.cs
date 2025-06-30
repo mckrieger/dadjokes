@@ -8,57 +8,22 @@ namespace DadJokes.Controllers;
 [Route("[controller]")]
 public class JokeController : ControllerBase
 {
-    public JokeController()
+    private readonly IJokeService _jokeService;
+
+    public JokeController(IJokeService jokeService)
     {
+        _jokeService = jokeService;
     }
 
     [HttpGet]
-    public ActionResult<List<Joke>> GetAll() =>
-        JokeService.GetAll();
-
-    [HttpGet("{id}")]
-    public ActionResult<Joke> Get(int id)
+    public async Task<IActionResult> GetRandom()
     {
-        var joke = JokeService.Get(id);
+        var joke = await _jokeService.GetRandomAsync();
 
-        if (joke == null)
+        if(joke == null)
             return NotFound();
 
-        return joke;
-    }
+        return Ok(joke);
 
-    [HttpPost]
-    public IActionResult Create(Joke joke)
-    {
-        JokeService.Add(joke);
-        return CreatedAtAction(nameof(Get), new { id = joke.Id }, joke);
-    }
-
-    [HttpPut("{id}")]
-    public IActionResult Update(int id, Joke joke)
-    {
-        if(id != joke.Id)
-            return BadRequest();
-
-        var existingJoke = JokeService.Get(id);
-        if(existingJoke is null)
-            return NotFound();
-
-        JokeService.Update(joke);
-
-        return NoContent();
-    }
-
-    [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
-    {
-        var joke = JokeService.Get(id);
-
-        if(joke is null)
-            return NotFound();
-
-        JokeService.Delete(id);
-
-        return NoContent();
     }
 }

@@ -4,44 +4,30 @@ using System.Net.Http;
 
 namespace DadJokes.Services;
 
-public static class JokeService
+public interface IJokeService
 {
-    static List<Joke> Jokes { get; }
-    static int nextId = 3;
-    static JokeService()
+    Task<JokeModel?> GetRandomAsync();
+}
+public class JokeService : IJokeService
+{
+    private readonly IHttpClientFactory _factory;
+    private readonly static string _userAgent = "DadJokes Project (https://github.com/mckrieger/dadjokes)";
+    public JokeService(
+        IHttpClientFactory factory
+    )
     {
-        Jokes = new List<Joke>
-        {
-            new Joke { Id = 1, Text = "asdf" },
-        };
+        _factory = factory;
     }
 
-    public static List<Joke> GetAll() => Jokes;
-
-
-    public static Joke? Get(int id) => Jokes.FirstOrDefault(j => j.Id == id);
-
-    public static void Add(Joke joke)
+    public async Task<JokeModel?> GetRandomAsync()
     {
-        joke.Id = nextId++;
-        Jokes.Add(joke);
-    }
+        using var client = _factory.CreateClient();
 
-    public static void Delete(int id)
-    {
-        var joke = Get(id);
-        if (joke is null)
-            return;
+        client.DefaultRequestHeaders.Add("User-Agent", _userAgent);
+        client.DefaultRequestHeaders.Add("Accept", "application/json");
+        client.BaseAddress = new Uri("https://icanhazdadjoke.com/");
 
-        Jokes.Remove(joke);
-    }
-
-    public static void Update(Joke joke)
-    {
-        var index = Jokes.FindIndex(j => j.Id == joke.Id);
-        if (index == -1)
-            return;
-
-        Jokes[index] = joke;
+        JokeModel? response = await client.GetFromJsonAsync<JokeModel>("");
+        return response;
     }
 }

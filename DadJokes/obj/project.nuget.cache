@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sJLyVRyIY/k=",
+  "dgSpecHash": "NU6bs3HGa40=",
   "success": true,
-  "projectFilePath": "/Users/mkrieger/Coding/Degreed/DadJokes/DadJokes.csproj",
+  "projectFilePath": "/Users/mkrieger/Coding/DadJokesASP/DadJokes/DadJokes.csproj",
   "expectedPackageFiles": [
     "/Users/mkrieger/.nuget/packages/microsoft.aspnetcore.openapi/9.0.6/microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
     "/Users/mkrieger/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
