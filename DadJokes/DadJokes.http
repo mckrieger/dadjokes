@@ -1,0 +1,38 @@
+@DadJokes_HostAddress = http://localhost:5001
+
+GET {{DadJokes_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{DadJokes_HostAddress}}/joke/
+Accept: application/json
+
+###
+GET {{DadJokes_HostAddress}}/joke/1
+Accept: application/json
+
+###
+
+GET {{DadJokes_HostAddress}}/joke/random
+Accept: application/json
+
+###
+
+POST {{DadJokes_HostAddress}}/joke/
+Content-Type: application/json
+
+{
+    "text": "qwerty"
+}
+
+###
+
+PUT {{DadJokes_HostAddress}}/joke/3
+Content-Type: application/json
+
+{
+    "id": 3,
+    "text": "updated"
+}
+
+###
