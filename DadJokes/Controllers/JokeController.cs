@@ -32,8 +32,9 @@ public class JokeController : ControllerBase
     {
         var jokeList = await _jokeService.GetByTermAsync(term, limit, page);
 
-        //sort list into object
-
+        if (jokeList == null)
+            return NotFound();
+            
         return Ok(jokeList);
     }
 }

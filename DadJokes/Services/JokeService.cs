@@ -9,7 +9,7 @@ public interface IJokeService
 {
     Task<JokeModel?> GetRandomAsync();
 
-    Task<JokesLengthGroupModel> GetByTermAsync(string term, int limit, int page);
+    Task<JokesLengthGroupModel?> GetByTermAsync(string term, int limit, int page);
 }
 public class JokeService : IJokeService
 {
@@ -31,7 +31,7 @@ public class JokeService : IJokeService
         return response;
     }
 
-    public async Task<JokesLengthGroupModel> GetByTermAsync(string term, int limit, int page)
+    public async Task<JokesLengthGroupModel?> GetByTermAsync(string term, int limit, int page)
     {
         var client = _factory.CreateClient(_clientName);
         JokesResponseModel? response = await client.GetFromJsonAsync<JokesResponseModel>($"search?term={term}&limit={limit}&page={page}");
@@ -52,7 +52,6 @@ public class JokeService : IJokeService
             var wordcount = text.Split(_delimiters, StringSplitOptions.RemoveEmptyEntries).Length;
             // highlight (Uppercase) search term in joke
             var highlightedText = Regex.Replace(text, term, m => m.Value.ToUpper(), RegexOptions.IgnoreCase);
-            Console.WriteLine(highlightedText);
 
             entry.Joke = highlightedText;
 

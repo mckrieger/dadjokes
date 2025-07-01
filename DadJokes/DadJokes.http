@@ -4,7 +4,7 @@ GET {{DadJokes_HostAddress}}/joke/
 Accept: application/json
 
 ###
-GET {{DadJokes_HostAddress}}/joke/mother
+GET {{DadJokes_HostAddress}}/joke/dog
 Accept: application/json
 
 ###
