@@ -1,0 +1,66 @@
+@page "/random"
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@inject HttpClient Client
+@rendermode InteractiveServer
+
+<PageTitle>Random</PageTitle>
+
+<h1>Random</h1>
+
+<div>
+  <button class="btn btn-primary" type="button" @onclick="Submit">
+    Get Random Joke
+  </button>
+</div>
+@if (isLoading)
+{
+    <p>Loading...</p>
+}
+else if (result != null)
+{
+    <p>Results:</p>
+    <p>@result.Joke</p>
+}
+else if (hasError){
+    <p>@errorMessage</p>
+}
+
+@code {
+    private JokeModel? result;
+    private bool isLoading = false;
+    private bool hasError = false;
+    private string errorMessage = string.Empty;
+
+    private async Task Submit()
+    {
+        isLoading = true;
+        result = null;
+        hasError = false;
+        errorMessage = "";
+
+        try
+        {
+            var response = await Client.GetFromJsonAsync<JokeModel>("/joke/");
+
+            result = response;
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine($"Search failed: {ex.Message}");
+            hasError = true;
+            errorMessage = $"Error occurred during search:\n {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    public class JokeModel
+{
+    public string? Id { get; set; }
+    public string? Joke { get; set; }
+}
+
+}

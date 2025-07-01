@@ -36,12 +36,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/mkrieger/Coding/DadJokesASP/FrontEnd/Components/Pages/Search.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TZWFyY2gucmF6b3I=
+[/Users/mkrieger/Coding/DadJokesASP/FrontEnd/Components/Pages/Random.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SYW5kb20ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/mkrieger/Coding/DadJokesASP/FrontEnd/Components/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9XZWF0aGVyLnJhem9y
+[/Users/mkrieger/Coding/DadJokesASP/FrontEnd/Components/Pages/Search.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TZWFyY2gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/mkrieger/Coding/DadJokesASP/FrontEnd/Components/Routes.razor]
