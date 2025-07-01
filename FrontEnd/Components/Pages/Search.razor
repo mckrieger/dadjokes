@@ -1,0 +1,23 @@
+@page "/search"
+@rendermode InteractiveServer
+
+<PageTitle>Search</PageTitle>
+
+<h1>Search</h1>
+
+<form>
+  <input type="search" id="search-input" placeholder="Enter search term">
+  <button class="btn btn-primary" type="submit" @onclick="SubmitSearch">
+    Search
+  </button>
+</form>
+<p role="status">Result: @result</p>
+
+@code {
+    private int result = 0;
+
+    private void SubmitSearch()
+    {
+        
+    }
+}
