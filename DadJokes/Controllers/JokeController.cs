@@ -20,10 +20,20 @@ public class JokeController : ControllerBase
     {
         var joke = await _jokeService.GetRandomAsync();
 
-        if(joke == null)
+        if (joke == null)
             return NotFound();
 
         return Ok(joke);
 
+    }
+
+    [HttpGet("{term}")]
+    public async Task<IActionResult> GetByTerm(string term, int limit = 30, int page = 1)
+    {
+        var jokeList = await _jokeService.GetByTermAsync(term, limit, page);
+
+        //sort list into object
+
+        return Ok(jokeList);
     }
 }
